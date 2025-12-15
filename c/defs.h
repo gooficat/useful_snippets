@@ -4,11 +4,13 @@
 #define addr &
 #define deref *
 
-#define not !
-#define is ==
-#define notis !=
+#ifndef __cplusplus
 #define and &&
 #define or ||
+#define not !
+#define is ==
+#endif
+#define notis !=
 
 #define OR |
 #define NOT ~
