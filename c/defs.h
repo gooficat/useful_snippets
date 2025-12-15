@@ -5,11 +5,12 @@
 #define deref *
 
 #ifndef __cplusplus
-#define and &&
-#define or ||
-#define not !
-#define is ==
+  #define and &&
+  #define or ||
+  #define not !
+  #define is ==
 #endif
+
 #define notis !=
 
 #define OR |
