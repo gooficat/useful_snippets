@@ -6,12 +6,12 @@
 
 void rsz_arr_f ( struct generic_arr ptr arr , u8 sz )
 {
-	u64 spowmul = arr->powmul * arr->powmul;
+	u64 spowmul = pow ( 2 , arr->powmul );
 	if ( spowmul < arr->len )
 	{
-		++arr->powmul;
+		while ( ( spowmul = pow ( 2, ++arr->powmul ) ) < arr->len );
 	retry:;
-		void * inb = realloc ( arr->get , sz * ( arr->powmul * arr->powmul ));
+		void * inb = realloc ( arr->get , sz * spowmul );
 		if ( inb )
 		{
 			arr->get = inb;
