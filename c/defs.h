@@ -1,5 +1,9 @@
 #pragma once
 
+#ifdef _WIN32
+  #undef addr
+#endif
+
 #define ptr *
 #define addr &
 #define deref *
