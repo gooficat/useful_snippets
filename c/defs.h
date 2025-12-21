@@ -63,3 +63,9 @@ typedef char ptr str;
 #define struc_t typedef struct
 #define enu_m typedef enum
 #define unio_n typedef union
+
+
+extern const char FMODE_RT[];
+extern const char FMODE_RB[];
+extern const char FMODE_WT[];
+extern const char FMODE_WB[];

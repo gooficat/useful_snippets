@@ -27,8 +27,6 @@ typedef array_type(str) strarr_t;
 
 #define at(i) get[i]
 
-strarr_t t;
-
 void rsz_arr_f(struct generic_arr ptr arr, u8 sz);
 
 #define rsz_arr(arr, type, amt)                                                                    \

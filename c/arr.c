@@ -1,4 +1,5 @@
 #include <malloc.h>
+#include "fancc.h"
 #include <math.h>
 #include "arr.h"
 #include "defs.h"
@@ -18,7 +19,7 @@ void rsz_arr_f(struct generic_arr ptr arr, u8 sz)
       }
       else
       {
-         printf("Failed to resize array! Retrying. This may cause a loop.");
+         fancc(RED, "Failed to resize array! Retrying. This may cause a loop.");
          goto retry;
       }
    }
