@@ -6,7 +6,7 @@
    if (arr.cap < arr.length)                                                                       \
    {                                                                                               \
       do                                                                                           \
-         arr.length *= 2;                                                                          \
+         arr.cap *= 2;                                                                             \
       while (arr.cap < arr.length);                                                                \
       arr.data = realloc(arr.data, sizeof(arr.data[0]) * arr.cap);                                 \
    }
@@ -16,7 +16,7 @@
    if (arr.cap / 2 > arr.length)                                                                   \
    {                                                                                               \
       do                                                                                           \
-         arr.length /= 2;                                                                          \
+         arr.cap /= 2;                                                                             \
       while (arr.cap / 2 > arr.length);                                                            \
       arr.data = realloc(arr.data, sizeof(arr.data[0]) * arr.cap);                                 \
    }
