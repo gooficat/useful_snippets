@@ -24,7 +24,7 @@ void fetch_token(fstream_t ptr fs, str tk)
       fsgetc(deref fs);
    }
    u8 i = 0;
-   if (!fseof(deref fs))
+   if (not fseof(deref fs))
       do
       {
          tk[i++] = (char)fs->c;
