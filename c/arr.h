@@ -1,34 +1,33 @@
 #pragma once
+// growing array
 
-#include <malloc.h>
-#include <stdlib.h>
-#include "defs.h"
-
-struct generic_arr
-{
-   u64 len;
-   u64 powmul;
-   void ptr get;
-};
-
-#define array_type(type)                                                                           \
-   struct                                                                                          \
+#define grow_arr(arr, amt)                                                                         \
+   arr.length += amt;                                                                              \
+   if (arr.cap < arr.length)                                                                       \
    {                                                                                               \
-      u64 len;                                                                                     \
-      u64 powmul;                                                                                  \
-      type ptr get;                                                                                \
+      do                                                                                           \
+         arr.cap *= 2;                                                                             \
+      while (arr.cap < arr.length);                                                                \
+      arr.data = realloc(arr.data, sizeof(arr.data[0]) * arr.cap);                                 \
    }
 
-typedef array_type(str) strarr_t;
+#define shrink_arr(arr, amt)                                                                       \
+   arr.length -= amt;                                                                              \
+   if (arr.cap / 2 > arr.length)                                                                   \
+   {                                                                                               \
+      do                                                                                           \
+         arr.cap /= 2;                                                                             \
+      while (arr.cap / 2 > arr.length);                                                            \
+      arr.data = realloc(arr.data, sizeof(arr.data[0]) * arr.cap);                                 \
+   }
 
-#define mk_arr(t) {.get = malloc(sizeof(t)), .len = 0, .powmul = 1}
+#define array_struct(type)                                                                         \
+   {                                                                                               \
+      type* data;                                                                                  \
+      unsigned long long length, cap;                                                              \
+   }
 
-#define del_arr(arr) free(arr.get)
-
-#define at(i) get[i]
-
-void rsz_arr_f(struct generic_arr ptr arr, u8 sz);
-
-#define rsz_arr(arr, type, amt)                                                                    \
-   arr.len += amt;                                                                                 \
-   rsz_arr_f((struct generic_arr ptr)addr arr, sizeof(type))
+#define init_arr(arr)                                                                              \
+   (arr).data = malloc(sizeof((arr).data[0]));                                                     \
+   (arr).cap = 1;                                                                                  \
+   arr.length = 0;

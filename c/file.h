@@ -1,7 +1,6 @@
 #pragma once
 
 #include <stdio.h>
-#include "arr.h"
 #include "defs.h"
 
 struc_t
