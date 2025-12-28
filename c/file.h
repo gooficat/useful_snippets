@@ -1,24 +1,23 @@
 #pragma once
 
 #include <stdio.h>
-#include "defs.h"
+#include "better.h"
 
-struc_t
+CLASS(FStream)
 {
-   FILE ptr f;
-   int c;
-}
-fstream_t;
+    FILE ptr f;
+    int c;
+};
 
-str dump_file(const str in_path);
+STRING dump_file(const STRING in_path);
 
-void fetch_token(fstream_t ptr fs, str tk);
+void fetch_token(FStream ptr fs, STRING tk);
 
 #define fsgetc(fs) (fs).c = fgetc((fs).f);
 
 #define fsopen(fs, path, mode)                                                                     \
-   fopen_s(addr(fs).f, path, mode);                                                                \
-   fsgetc(fs);
+    fopen_s(addr(fs).f, path, mode);                                                               \
+    fsgetc(fs);
 
 #define fsclose(fs) fclose((fs).f);
 

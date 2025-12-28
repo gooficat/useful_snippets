@@ -1,4 +1,4 @@
-#include "defs.h"
+#include "better.h"
 
 const char FMODE_RT[] = "rt";
 const char FMODE_RB[] = "rb";
